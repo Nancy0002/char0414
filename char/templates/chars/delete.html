@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}<title>資料表刪除</title>{% endblock %}
+{% block content %}
+	<h1>資料表刪除</h1>
+    <h3>是否確定刪除{{ char.username }}?</h3>
+	<form action="." method="POST" name="form1">
+		{% csrf_token %}
+        <input class="btn btn-success" type="submit" value="sure" />
+        <a class="btn btn-warning" href="/index/">no</a>
+	</form>
+{% endblock %}

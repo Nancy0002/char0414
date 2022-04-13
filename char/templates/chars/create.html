@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <body>
+        
+        <h2>Write your thinking</h2>
+        <form action="." method="POST" novalidate="novalidate">
+	    {% csrf_token %}
+            <table class="table table-striped table-bordered table-hover table-condensed">
+				<label>Author:</label> <input type="text" name="username" placeholder="Author" /> <br /><br />
+	            <label>Title:</label> <input type="text" name="title" placeholder="Title" /><br /><br />
+	            <label>Content:</label> <textarea name="content" placeholder="Content"> </textarea><br /><br />
+            </table>
+            <input class="btn btn-success" type="submit" value="send message"/>
+        </form>
+    </body>
+{% endblock %}

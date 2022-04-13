@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <body>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+        
+            <thead>
+                <tr class="danger">
+                    <th>Messagetime</th>
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th></th>
+                 </tr>
+            </thead>
+            <tbody>
+                {% if chars %}
+                    {% for char in chars %}
+                        <tr class="{% cycle 'active' 'success' 'warning' 'info'  %}">
+                            <td>{{ char.publish|date:'Y-m-d H:i:s'}}</td>
+                            <td>{{ char.username }}</td>
+                            <td>{{ char.title }}</td>
+                            <td>{{ char.content }}</td>
+                            <td>
+                                <a href="/delete/{{char.id}}/" title="刪除">Del</a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">no data</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table> 
+        <a class="btn btn-xs btn-info" href="/create/">leave message</a>
+    </body>
+{% endblock %}
